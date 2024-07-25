@@ -636,7 +636,7 @@ if [[ "$BUILD_TYPE" == "pullrequest"  ||  "$BUILD_TYPE" == "branch" ]]; then
       BUILD_TARGET=$(echo "$IMAGE_BUILD_DATA" | jq -r '.imageBuild.target // false')
       # determine if buildkit should be disabled for this build
       DOCKER_BUILDKIT=1
-      if [ "$(echo "${ENVIRONMENT_IMAGE_BUILD_DATA}" | jq -r '.buildKit // true')" == "false" ]; then
+      if [ "$(echo "${ENVIRONMENT_IMAGE_BUILD_DATA}" | jq -r '.buildKit')" == "false" ]; then
           DOCKER_BUILDKIT=0
           echo "Not using BuildKit for $DOCKERFILE"
       else
