@@ -2,7 +2,7 @@ ARG UPSTREAM_REPO
 ARG UPSTREAM_TAG
 ARG GO_VER
 FROM ${UPSTREAM_REPO:-uselagoon}/commons:${UPSTREAM_TAG:-latest} as commons
-FROM golang:${GO_VER:-1.21}-alpine3.18 as golang
+FROM golang:${GO_VER:-1.22}-alpine3.20 as golang
 
 RUN apk add --no-cache git
 RUN go install github.com/a8m/envsubst/cmd/envsubst@v1.4.2
