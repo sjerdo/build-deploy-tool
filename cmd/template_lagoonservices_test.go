@@ -310,7 +310,22 @@ func TestTemplateLagoonServices(t *testing.T) {
 			want:         "internal/testdata/complex/service-templates/service4",
 		},
 		{
-			name: "test10 basic-persistent deployment multiple volumes",
+			name: "test10 basic deployment polysite cronjobs",
+			args: testdata.GetSeedData(
+				testdata.TestData{
+					ProjectName:     "example-project",
+					EnvironmentName: "main",
+					Branch:          "main",
+					LagoonYAML:      "internal/testdata/basic/lagoon.polysite-cronjobs.yml",
+					ImageReferences: map[string]string{
+						"node": "harbor.example/example-project/main/node@sha256:b2001babafaa8128fe89aa8fd11832cade59931d14c3de5b3ca32e2a010fbaa8",
+					},
+				}, true),
+			templatePath: "testoutput",
+			want:         "internal/testdata/basic/service-templates/service7",
+		},
+		{
+			name: "test11 basic-persistent deployment multiple volumes",
 			args: testdata.GetSeedData(
 				testdata.TestData{
 					ProjectName:     "example-project",
@@ -323,10 +338,10 @@ func TestTemplateLagoonServices(t *testing.T) {
 					},
 				}, true),
 			templatePath: "testoutput",
-			want:         "internal/testdata/basic/service-templates/service7",
+			want:         "internal/testdata/basic/service-templates/service8",
 		},
 		{
-			name: "test11 basic deployment multiple volumes",
+			name: "test12 basic deployment multiple volumes",
 			args: testdata.GetSeedData(
 				testdata.TestData{
 					ProjectName:     "example-project",
@@ -339,10 +354,10 @@ func TestTemplateLagoonServices(t *testing.T) {
 					},
 				}, true),
 			templatePath: "testoutput",
-			want:         "internal/testdata/basic/service-templates/service8",
+			want:         "internal/testdata/basic/service-templates/service9",
 		},
 		{
-			name: "test12 complex deployment multiple volumes",
+			name: "test13 complex deployment multiple volumes",
 			args: testdata.GetSeedData(
 				testdata.TestData{
 					ProjectName:     "example-project",
@@ -360,7 +375,7 @@ func TestTemplateLagoonServices(t *testing.T) {
 					},
 				}, true),
 			templatePath: "testoutput",
-			want:         "internal/testdata/complex/service-templates/service5",
+			want:         "internal/testdata/complex/service-templates/service6",
 		},
 	}
 	for _, tt := range tests {
